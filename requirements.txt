@@ -1,0 +1,12 @@
+# JupyterLab 本体
+jupyterlab>=4.2,<5
+ipywidgets
+
+# データ分析・可視化
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn
+
+# 必要に応じて追加してください

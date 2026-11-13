@@ -1,0 +1,5 @@
+# PyTorch（Linux 向け wheel は CUDA ランタイムを同梱）
+# CUDA バージョンを指定したい場合は例えば以下のようにする:
+#   --extra-index-url https://download.pytorch.org/whl/cu128
+torch
+torchvision

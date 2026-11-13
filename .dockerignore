@@ -1,0 +1,5 @@
+work/
+.env
+.git/
+**/.ipynb_checkpoints/
+**/__pycache__/

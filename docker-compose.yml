@@ -1,0 +1,29 @@
+services:
+  jupyterlab:
+    build:
+      context: .
+      args:
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+    image: jupyterlab-template:latest
+    container_name: ${CONTAINER_NAME:-jupyterlab}
+    ports:
+      - "127.0.0.1:${JUPYTER_PORT:-8888}:8888"
+    environment:
+      JUPYTER_TOKEN: ${JUPYTER_TOKEN:-}
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility
+    # GPU を使う（ホストに NVIDIA ドライバと NVIDIA Container Toolkit が必要）
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    volumes:
+      - ./work:/home/jovyan/work
+      - jupyter-settings:/home/jovyan/.jupyter
+    restart: unless-stopped
+
+volumes:
+  jupyter-settings:
